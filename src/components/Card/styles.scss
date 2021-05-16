@@ -1,0 +1,19 @@
+.card__content {
+  width: 250px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+
+  border: solid 1px red;
+
+  .card__content--title {
+    font-size: 1rem;
+  }
+  .card__content--description {
+    font-size: 0.8rem;
+  }
+
+  .card__content--date {
+    font-size: 0.7rem;
+  }
+}

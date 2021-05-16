@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import Card from "../../components/Card";
+
 import "./styles.scss";
 import api from "../../services/api";
 
@@ -8,14 +10,9 @@ function Home() {
   const [resultSearch, setResultSearch] = useState();
 
   const searchBooks = () => {
-    api.get(`${barState}`).then((res) => {
+    api.get(`?q=${barState}`).then((res) => {
       setResultSearch(res.data.items);
-      console.log("resultado", resultSearch);
     });
-  };
-
-  const handleClickCard = (e) => {
-    console.log(e);
   };
 
   return (
@@ -37,17 +34,7 @@ function Home() {
       </div>
       <div className="result__content">
         {resultSearch !== undefined
-          ? resultSearch.map((book) => (
-              <div className="card" onClick={() => handleClickCard(book.id)}>
-                <img
-                  src={`${book.volumeInfo.imageLinks.smallThumbnail}`}
-                  alt="Capa do Livro"
-                />
-                <h1>{book.volumeInfo.title}</h1>
-                <p>{book.volumeInfo.description}</p>
-                <p>{book.volumeInfo.publishedDate}</p>
-              </div>
-            ))
+          ? resultSearch.map((book) => <Card key={book.id} props={book} />)
           : null}
       </div>
     </div>
