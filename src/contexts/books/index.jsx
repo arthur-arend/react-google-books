@@ -1,21 +1,21 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 import PropTypes from "prop-types";
-
-// import { Container } from './styles';
-import api from "../../services/api";
 
 const BooksContext = createContext({});
 
 export const BooksProvider = ({ children }) => {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState();
+  const [favBooks, setFavBooks] = useState([]);
   const [searchField, setSearchField] = useState("");
 
   // useEffect(() => {
-  //   const getBooks = () => {
-  //     api.get(`?q=${searchField}`).then((res) => {
-  //       setBooks(res.data.items);
-  //     });
-  //   };
+  //   if (books) {
+  //     const getBooks = () => {
+  //       api.get(`?q=${searchField}`).then((res) => {
+  //         setBooks(res.data.items);
+  //       });
+  //     };
+  //   }
   // }, [searchField]);
 
   return (
@@ -25,6 +25,8 @@ export const BooksProvider = ({ children }) => {
         setBooks,
         searchField,
         setSearchField,
+        favBooks,
+        setFavBooks,
       }}
     >
       {children}
@@ -37,13 +39,22 @@ export const useBooks = () => {
 
   if (!context) throw new Error("useBooks must be used within a BooksContext.");
 
-  const { books, setBooks, searchField, setSearchField } = context;
+  const {
+    books,
+    setBooks,
+    searchField,
+    setSearchField,
+    favBooks,
+    setFavBooks,
+  } = context;
 
   return {
     books,
     setBooks,
     searchField,
     setSearchField,
+    favBooks,
+    setFavBooks,
   };
 };
 

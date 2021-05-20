@@ -1,13 +1,25 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
+import { useBooks } from "../../contexts/books";
 import "./styles.scss";
 
 function Card(props) {
+  const { favBooks, setFavBooks } = useBooks();
   const hystory = useHistory();
 
   const handleClickCard = (e) => {
     hystory.push(`/detail/${e}`);
+  };
+
+  const handleFav = (bookData) => {
+    // setFavBooks({ ...favBooks, bookData });
+
+    const favs = favBooks;
+    favs.push(bookData);
+
+    setFavBooks(favs);
+    console.log(favBooks);
   };
 
   return (
@@ -34,7 +46,11 @@ function Card(props) {
         <p className="card__content--date">
           Lançamento: {props.props.volumeInfo.publishedDate}
         </p>
-        <button type="button" className="fav__button">
+        <button
+          type="button"
+          className="fav__button"
+          onClick={() => handleFav(props.props)}
+        >
           ADD
         </button>
         <button

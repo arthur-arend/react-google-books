@@ -1,8 +1,12 @@
 import Routes from "./routes";
-// import { AppProvider } from "./contexts";
+import { BooksProvider } from "./contexts/books";
 
 function App() {
-  return <Routes />;
+  return (
+    <BooksProvider>
+      <Routes />
+    </BooksProvider>
+  );
 }
 
 export default App;
