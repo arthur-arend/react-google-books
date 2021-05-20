@@ -1,5 +1,5 @@
 import Routes from "./routes";
-import { AppProvider } from "./contexts";
+// import { AppProvider } from "./contexts";
 
 function App() {
   return <Routes />;

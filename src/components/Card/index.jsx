@@ -39,7 +39,7 @@ function Card(props) {
         </button>
         <button
           type="button"
-          className="fav__button"
+          className="detail__button"
           onClick={() => handleClickCard(props.props.id)}
         >
           Detalhes

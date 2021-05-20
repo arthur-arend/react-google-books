@@ -1,20 +1,31 @@
-#container {
-  width: 100vw;
-  height: 100vh;
+.detail__container {
+  width: 100%;
+  height: 100%;
   background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
   .detail__content {
     width: 80%;
     height: 80%;
+    text-align: center;
+    border-radius: 15px;
+    padding: 1rem;
+    background-color: #0087bf;
+    margin-top: 1rem;
 
-    display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: row;
+    justify-content: center;
 
-    .detail__left {
-      width: 100%;
-      height: 100%;
+    .detail__figure {
+    }
+
+    .detail__text-Wrapper {
+      h1 {
+        font-size: 1rem;
+      }
     }
   }
 }

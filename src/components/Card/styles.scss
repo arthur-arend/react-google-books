@@ -1,6 +1,13 @@
 .card__content {
-  width: 400px;
-  height: 200px;
+  width: 300px;
+  height: 180px;
+  border: 2px solid #0087bf;
+  border-radius: 5px;
+  background-color: #0087bf;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 
   display: flex;
   flex-direction: row;
@@ -14,8 +21,11 @@
 
   .card__right {
     width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     .card__content--title {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
     .card__content--description {
       font-size: 0.8rem;
@@ -23,6 +33,11 @@
 
     .card__content--date {
       font-size: 0.7rem;
+    }
+
+    .detail__button {
+      width: 50%;
+      background-color: #fecd3d;
     }
   }
 }

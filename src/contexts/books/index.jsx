@@ -10,13 +10,13 @@ export const BooksProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
   const [searchField, setSearchField] = useState("");
 
-  useEffect(() => {
-    const getBooks = () => {
-      api.get(`?q=${searchField}`).then((res) => {
-        setBooks(res.data.items);
-      });
-    };
-  }, [searchField]);
+  // useEffect(() => {
+  //   const getBooks = () => {
+  //     api.get(`?q=${searchField}`).then((res) => {
+  //       setBooks(res.data.items);
+  //     });
+  //   };
+  // }, [searchField]);
 
   return (
     <BooksContext.Provider
