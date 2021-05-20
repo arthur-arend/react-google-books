@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import Card from "../../components/Card";
 import Header from "../../components/Header";
@@ -11,6 +12,7 @@ import api from "../../services/api";
 const Home = () => {
   const [pagination, setPagination] = useState(0);
   const { books, setBooks, searchField, setSearchField } = useBooks();
+  const history = useHistory();
 
   useEffect(() => {
     if (books) {
@@ -45,11 +47,15 @@ const Home = () => {
     }
   };
 
+  const goToFavorites = () => {
+    history.push("/favorites");
+  };
+
   return (
     <div className="home__content">
       <Header title={"Home"} />
       <div className="search__bar">
-        <h1>Pesquisador de Livros</h1>
+        <h1>Biblioteca Online</h1>
         <input
           type="text"
           value={searchField}
@@ -63,6 +69,13 @@ const Home = () => {
           onClick={() => searchBooks()}
         >
           Buscar
+        </button>
+        <button
+          type="button"
+          className="search__bar--fav"
+          onClick={goToFavorites}
+        >
+          Favoritos
         </button>
       </div>
       <div className="result__content">

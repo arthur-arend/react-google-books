@@ -13,13 +13,10 @@ function Card(props) {
   };
 
   const handleFav = (bookData) => {
-    // setFavBooks({ ...favBooks, bookData });
-
     const favs = favBooks;
     favs.push(bookData);
 
     setFavBooks(favs);
-    console.log(favBooks);
   };
 
   return (
@@ -51,7 +48,7 @@ function Card(props) {
           className="fav__button"
           onClick={() => handleFav(props.props)}
         >
-          ADD
+          Favoritar
         </button>
         <button
           type="button"
