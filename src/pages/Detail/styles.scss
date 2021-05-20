@@ -1,0 +1,20 @@
+#container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+
+  .detail__content {
+    width: 80%;
+    height: 80%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    .detail__left {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

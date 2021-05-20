@@ -6,31 +6,45 @@ import "./styles.scss";
 function Card(props) {
   const hystory = useHistory();
 
-  const handleClickCard = (id) => {
-    hystory.push(`/detail/${id}`);
+  const handleClickCard = (e) => {
+    hystory.push(`/detail/${e}`);
   };
 
   return (
-    <div
-      className="card__content"
-      onClick={() => handleClickCard(props.props.id)}
-    >
-      <img
-        className="card__content--img"
-        src={`${props.props.volumeInfo.imageLinks.smallThumbnail}`}
-        alt="Capa do Livro"
-      />
-      <h1 className="card__content--title">
-        Título: {props.props.volumeInfo.title}
-      </h1>
-      {props.props.volumeInfo.description ? (
+    <div className="card__content">
+      <div className="card__left">
+        <img
+          className="card__left--img"
+          src={`${props.props.volumeInfo.imageLinks.thumbnail}`}
+          alt="Capa do Livro"
+        />
+      </div>
+      <div className="card__right">
+        <h1 className="card__content--title">
+          Título: {props.props.volumeInfo.title}
+        </h1>
+
         <p className="card__content--description">
-          Descrição: {props.props.volumeInfo.description}
+          Descrição:{" "}
+          {props.props.volumeInfo.description
+            ? props.props.volumeInfo.description
+            : "Este livro não possui descrição"}
         </p>
-      ) : null}
-      <p className="card__content--date">
-        Lançamento: {props.props.volumeInfo.publishedDate}
-      </p>
+
+        <p className="card__content--date">
+          Lançamento: {props.props.volumeInfo.publishedDate}
+        </p>
+        <button type="button" className="fav__button">
+          ADD
+        </button>
+        <button
+          type="button"
+          className="fav__button"
+          onClick={() => handleClickCard(props.props.id)}
+        >
+          Detalhes
+        </button>
+      </div>
     </div>
   );
 }
