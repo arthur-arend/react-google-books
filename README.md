@@ -1,4 +1,4 @@
-#Publicação
+# Publicação
 
 O projeto foi publicado na plataforma da Vercel, você pode acessar a página pelo link: https://react-google-books.vercel.app/
 

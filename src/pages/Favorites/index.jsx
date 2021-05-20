@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import Header from "../../components/Header";
 import Card from "../../components/Card";
@@ -8,6 +9,11 @@ import "./styles.scss";
 
 function Favorites() {
   const { favBooks } = useBooks();
+  const history = useHistory();
+
+  function handleBack() {
+    history.goBack();
+  }
 
   return (
     <div className="favorites__container">
@@ -21,6 +27,9 @@ function Favorites() {
             </div>
           );
         })}
+        <button type="button" onClick={() => handleBack()}>
+          Voltar
+        </button>
       </div>
     </div>
   );

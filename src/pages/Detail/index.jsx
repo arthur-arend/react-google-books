@@ -20,7 +20,6 @@ function Detail() {
       })
       .catch((error) => {
         alert("Ocorreu um erro ao buscar o livro");
-        console.log(error);
       });
   }, [id]);
 
