@@ -10,11 +10,7 @@ function Card(props) {
   const history = useHistory();
 
   useEffect(() => {
-    favBooks.forEach((fav) => {
-      if (fav.id === props.props.id) {
-        setControlFavs(false);
-      }
-    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClickCard = (e) => {
@@ -25,9 +21,17 @@ function Card(props) {
 
   const handleFav = (bookData) => {
     const favs = favBooks;
-    favs.push(bookData);
 
-    setFavBooks(favs);
+    favBooks.forEach((fav) => {
+      if (fav.id === props.props.id) {
+        setControlFavs(false);
+      }
+    });
+
+    if (true) {
+      favs.push(bookData);
+      setFavBooks(favs);
+    }
   };
 
   return (
@@ -40,7 +44,7 @@ function Card(props) {
             alt="Capa do Livro"
           />
         ) : (
-          <p>No Image</p>
+          <p className="no-image__content">No Image</p>
         )}
       </div>
       <div className="card__right">

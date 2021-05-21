@@ -34,10 +34,12 @@ function Detail() {
           <Header title={"Detalhes"} />
           <div className="detail__content">
             <div className="detail__figure">
-              <img
-                src={`${detailBook.imageLinks.thumbnail}`}
-                alt="Capa do Livro"
-              />
+              {detailBook.imageLinks ? (
+                <img
+                  src={`${detailBook.imageLinks.thumbnail}`}
+                  alt="Capa do Livro"
+                />
+              ) : null}
             </div>
 
             <div className="detail__text-Wrapper">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import Card from "../../components/Card";
@@ -11,15 +11,8 @@ import api from "../../services/api";
 
 const Home = () => {
   const [pagination, setPagination] = useState(0);
-  const { books, setBooks, searchField, setSearchField, favBooks } = useBooks();
+  const { books, setBooks, searchField, setSearchField } = useBooks();
   const history = useHistory();
-
-  useEffect(() => {
-    if (books) {
-      searchBooks();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pagination]);
 
   const searchBooks = () => {
     if (searchField) {
@@ -42,8 +35,10 @@ const Home = () => {
     if (books) {
       if (control === -1 && pagination > 0) {
         setPagination(pagination - 5);
+        searchBooks();
       } else if (control === 1) {
         setPagination(pagination + 5);
+        searchBooks();
       }
     }
   };
