@@ -11,7 +11,7 @@ import api from "../../services/api";
 
 const Home = () => {
   const [pagination, setPagination] = useState(0);
-  const { books, setBooks, searchField, setSearchField } = useBooks();
+  const { books, setBooks, searchField, setSearchField, favBooks } = useBooks();
   const history = useHistory();
 
   useEffect(() => {
@@ -22,18 +22,20 @@ const Home = () => {
   }, [pagination]);
 
   const searchBooks = () => {
-    api
-      .get(`?q=${searchField}&startIndex=${pagination}&maxResults=9`)
-      .then((res) => {
-        if (res.data.items) {
-          setBooks(res.data.items);
-        } else {
-          alert("Não foram encontrados Livros para a pesquisa");
-        }
-      })
-      .catch((error) => {
-        alert("Ocorreu um erro ao buscar o livro");
-      });
+    if (searchField) {
+      api
+        .get(`?q=${searchField}&startIndex=${pagination}&maxResults=9`)
+        .then((res) => {
+          if (res.data.items || res.data.items > 0) {
+            setBooks(res.data.items);
+          } else {
+            alert("Não foram encontrados Livros para a pesquisa");
+          }
+        })
+        .catch((error) => {
+          alert("Ocorreu um erro ao buscar o livro");
+        });
+    }
   };
 
   const changePagination = (control) => {

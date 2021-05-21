@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import { useBooks } from "../../contexts/books";
@@ -6,10 +6,21 @@ import "./styles.scss";
 
 function Card(props) {
   const { favBooks, setFavBooks } = useBooks();
-  const hystory = useHistory();
+  const [controlFavs, setControlFavs] = useState(true);
+  const history = useHistory();
+
+  useEffect(() => {
+    favBooks.forEach((fav) => {
+      if (fav.id === props.props.id) {
+        setControlFavs(false);
+      }
+    });
+  }, []);
 
   const handleClickCard = (e) => {
-    hystory.push(`/detail/${e}`);
+    if (true) {
+      history.push(`/detail/${e}`);
+    }
   };
 
   const handleFav = (bookData) => {
@@ -22,11 +33,15 @@ function Card(props) {
   return (
     <div className="card__content">
       <div className="card__left">
-        <img
-          className="card__left--img"
-          src={`${props.props.volumeInfo.imageLinks.thumbnail}`}
-          alt="Capa do Livro"
-        />
+        {props.props.volumeInfo.imageLinks ? (
+          <img
+            className="card__left--img"
+            src={`${props.props.volumeInfo.imageLinks.thumbnail}`}
+            alt="Capa do Livro"
+          />
+        ) : (
+          <p>No Image</p>
+        )}
       </div>
       <div className="card__right">
         <h1 className="card__content--title">
@@ -43,13 +58,16 @@ function Card(props) {
         <p className="card__content--date">
           Lançamento: {props.props.volumeInfo.publishedDate}
         </p>
-        <button
-          type="button"
-          className="fav__button"
-          onClick={() => handleFav(props.props)}
-        >
-          Favoritar
-        </button>
+        {controlFavs ? (
+          <button
+            type="button"
+            className="fav__button"
+            onClick={() => handleFav(props.props)}
+          >
+            Favoritar
+          </button>
+        ) : null}
+
         <button
           type="button"
           className="detail__button"
