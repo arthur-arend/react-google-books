@@ -50,7 +50,7 @@ const Home = () => {
   return (
     <div className="home__content">
       <Header title={"Home"} />
-      <div className="search__bar">
+      <div className="search__bar-content">
         <h1>Biblioteca Online</h1>
         <input
           type="text"
@@ -74,26 +74,28 @@ const Home = () => {
           Favoritos
         </button>
       </div>
-      <div className="result__content">
-        {books !== undefined
-          ? books.map((book) => {
+      {books !== undefined ? (
+        <>
+          <div className="result__content">
+            {books.map((book) => {
               return (
                 <div className="card__wrapper">
                   <Card key={book.id} props={book} />
                 </div>
               );
-            })
-          : null}
-      </div>
-      <nav className="navigation__content">
-        <button type="button" onClick={() => changePagination(-1)}>
-          Previus
-        </button>
-        {pagination + 1}
-        <button type="button" onClick={() => changePagination(1)}>
-          Next
-        </button>
-      </nav>
+            })}
+          </div>
+          <nav className="navigation__content">
+            <button type="button" onClick={() => changePagination(-1)}>
+              Previus
+            </button>
+            {pagination + 1}
+            <button type="button" onClick={() => changePagination(1)}>
+              Next
+            </button>
+          </nav>
+        </>
+      ) : null}
     </div>
   );
 };

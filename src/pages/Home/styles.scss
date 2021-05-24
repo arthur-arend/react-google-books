@@ -6,7 +6,7 @@
   align-items: center;
   flex-direction: column;
 
-  .search__bar {
+  .search__bar-content {
     width: 100%;
     height: 20%;
     text-align: center;
@@ -57,14 +57,14 @@
 
   .result__content {
     width: 90%;
-    height: 70%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
+    min-height: 70%;
     .card__wrapper {
-      margin: 0.5rem;
+      margin-bottom: 5px;
     }
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: space-around;
+    // align-items: flex-start;
   }
 
   .navigation__content {

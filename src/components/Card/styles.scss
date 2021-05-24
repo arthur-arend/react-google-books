@@ -1,6 +1,6 @@
 .card__content {
-  width: 300px;
-  height: 180px;
+  width: 100%;
+  height: 160px;
   border: 2px solid #0087bf;
   border-radius: 5px;
   background-color: #0087bf;
@@ -12,7 +12,8 @@
   display: flex;
   flex-direction: row;
   .card__left {
-    width: 40%;
+    width: 128px;
+    height: 160px;
     img {
       width: 100%;
       height: 100%;
@@ -24,6 +25,7 @@
 
   .card__right {
     width: 60%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

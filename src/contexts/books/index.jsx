@@ -8,16 +8,6 @@ export const BooksProvider = ({ children }) => {
   const [favBooks, setFavBooks] = useState([]);
   const [searchField, setSearchField] = useState("");
 
-  // useEffect(() => {
-  //   if (books) {
-  //     const getBooks = () => {
-  //       api.get(`?q=${searchField}`).then((res) => {
-  //         setBooks(res.data.items);
-  //       });
-  //     };
-  //   }
-  // }, [searchField]);
-
   return (
     <BooksContext.Provider
       value={{
